@@ -1,3 +1,4 @@
+package services;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Scanner;
@@ -5,9 +6,10 @@ import java.util.Scanner;
 public class InputValidity {
     public static int  isIntValid(Scanner sc){
         int arg = 0;
-            boolean valid = false;
+        boolean valid = false;
 
             while (!valid) {
+
                 if (sc.hasNextInt()) {
                     arg = sc.nextInt();
                     valid = true;
@@ -45,7 +47,7 @@ public class InputValidity {
 
         while (!valid) {
             arg = sc.nextLine();
-            if (!arg.isEmpty() && !arg.isBlank() &&arg.matches("[a-zA-Z]+")) {
+            if (!arg.isEmpty() && !arg.isBlank() &&arg.matches("^[a-zA-Z -]+$")) {
                 valid = true;
             } else {
                 System.out.print("Please enter a valid string: ");

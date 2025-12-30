@@ -1,3 +1,4 @@
+package models;
 public class Timer {
     public static void delayTimer(){
         try {

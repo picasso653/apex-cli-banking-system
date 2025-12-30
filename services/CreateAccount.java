@@ -1,14 +1,14 @@
+package services;
 
 import java.util.Scanner;
+
+import models.*;
+
 
 public class CreateAccount {
     private static SavingsAccount createSavingsAccount(String name, double balance, String pin){
         System.out.println("Creating Savings Account");
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
+        Timer.delayTimer();
         System.out.println("Getting the "+balance+" cedis deposit");
         String accountNumber = "SA-" + generateAccountNumber();
         return new SavingsAccount(name, accountNumber, balance, pin);

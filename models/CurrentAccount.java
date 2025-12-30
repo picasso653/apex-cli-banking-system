@@ -1,3 +1,6 @@
+package models;
+
+import exceptionhandlers.InsufficientFundsException;
 
 public class CurrentAccount extends Account{
     private final double accountLimit = 500000.0;
@@ -12,7 +15,7 @@ public class CurrentAccount extends Account{
     
     
     @Override
-    void deposit(double amount){
+    public void deposit(double amount){
         Timer.delayTimer();
         if (amount > 0){
             if (balance + amount <= accountLimit){
@@ -33,7 +36,7 @@ public class CurrentAccount extends Account{
 
     
     @Override
-    void withdraw(double amount){
+    public void withdraw(double amount) throws InsufficientFundsException{
         Timer.delayTimer();
        if (amount > 0){
         if (balance - amount >= -500){
@@ -45,7 +48,7 @@ public class CurrentAccount extends Account{
             transactionhistory.add(new Transactions(Integer.toString(id), TransactionType.Debit, amount));
             System.out.println("An amount of " + amount + " has been withdrawn. Remaining balance: " + balance);
         } else {
-            throw new IllegalArgumentException("Insufficient funds.");
+            throw new InsufficientFundsException("Insufficient funds.");
         }
     }
          else {

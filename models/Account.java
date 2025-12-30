@@ -1,8 +1,12 @@
+package models;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+
+import exceptionhandlers.InsufficientFundsException;
+import services.InputValidity;
 
 public abstract class Account implements Authenticatable {
     final private String accountName;
@@ -21,9 +25,9 @@ public abstract class Account implements Authenticatable {
         
     }
     
-    abstract void deposit(double amount);
-    abstract void withdraw(double amount) throws InsufficientFundsException;
-    abstract double calculateInterest();
+    public abstract void deposit(double amount);
+    public abstract void withdraw(double amount) throws InsufficientFundsException;
+    public abstract double calculateInterest();
 
 
     public String getAccountName() {

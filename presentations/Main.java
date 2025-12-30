@@ -1,4 +1,10 @@
+package presentations;
 import java.util.Scanner;
+
+import models.Timer;
+import services.CreateAccount;
+import services.InputValidity;
+import services.LoginSearch;
 
 class Main{
     public static void main(String[] args) {
@@ -14,6 +20,8 @@ class Main{
         switch (arg) {
             case 1 -> {
                 try {
+                    System.out.println("Processing");
+                    Timer.delayTimer();
                     CreateAccount.createAccountRequest(sc);
                     
                 } catch (Exception e) {
@@ -26,6 +34,7 @@ class Main{
                     LoginSearch.loginRequest(sc); 
                     
                 } catch (Exception e) {
+                    System.out.println(e.getMessage());
                 }
                 }
                 
@@ -38,5 +47,5 @@ class Main{
         }
         
     }
-}
+  }
 }

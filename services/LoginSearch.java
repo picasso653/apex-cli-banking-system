@@ -1,5 +1,11 @@
+package services;
 
 import java.util.Scanner;
+
+import models.Account;
+import exceptionhandlers.AccountNotFoundException;
+import models.BankDB;
+import presentations.UserDashboard;
 
 public class LoginSearch {
     public static void  loginRequest(Scanner sc){
@@ -10,8 +16,13 @@ public class LoginSearch {
             if (account == null){
                 throw new AccountNotFoundException("Account not found");
             }else {
-                account.verifyPIN(sc);
-                UserDashboard.openUserDashboard(account, sc);
+                try {
+                    account.verifyPIN(sc);
+                    UserDashboard.openUserDashboard(account, sc);
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
+                
             }
         
         

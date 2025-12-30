@@ -1,4 +1,7 @@
-class SavingsAccount extends Account {
+package models;
+import exceptionhandlers.InsufficientFundsException;
+
+public class SavingsAccount extends Account {
     private final double interestRate;
     private final double withdrawalLimit = 50;
     private int withdrawalCount = 3;
@@ -11,7 +14,7 @@ class SavingsAccount extends Account {
     }
 
     @Override
-    void withdraw(double amount) throws InsufficientFundsException{
+    public void withdraw(double amount) throws InsufficientFundsException{
         Timer.delayTimer();
         if (withdrawalCount > 0 ){
             if (amount > 0){
@@ -33,7 +36,7 @@ class SavingsAccount extends Account {
     }
 
     @Override
-    void deposit(double amount){
+    public void deposit(double amount){
         Timer.delayTimer();
         id ++;
         if (amount > 0){

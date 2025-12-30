@@ -1,8 +1,14 @@
+package presentations;
 
 import java.util.Scanner;
+import models.Account;
+import models.Timer;
+import services.InputValidity;
+
 
 
 public class UserDashboard {
+    @SuppressWarnings("UseSpecificCatch")
     public static void openUserDashboard(Account account, Scanner sc) {
         boolean loggedin = true;
         System.out.println("Welcome, " + account.getAccountName());
@@ -27,8 +33,8 @@ public class UserDashboard {
                         System.out.println("How much would you like to withdraw?");
                         double amount = InputValidity.isDoubleValid(sc);
                         account.withdraw(amount);
-                    } catch (InsufficientFundsException ex) {
-                        ex.getMessage();
+                    } catch (Exception ex) {
+                        System.out.println(ex.getMessage());
                     }
                 }
 
